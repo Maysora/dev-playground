@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Glass Cutter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="application.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Test Glass Cutter</h1>
+      <form id="form_calculate" action="#" class="needs-validation" novalidate>
+        <div class="row">
+          <div class="col-3 mb-2 from-container rectangle-data">
+            <div class="input-group">
+              <span class="input-group-text">From</span>
+              <input type="number" class="form-control input-width" placeholder="Width" aria-label="Width" required="required" min="1" max="1000" step="1">
+              <span class="input-group-text">x</span>
+              <input type="number" class="form-control input-height" placeholder="Height" aria-label="Height" required="required" min="1" max="1000" step="1">
+            </div>
+          </div>
+        </div>
+        <div class="row mb-2 g-2">
+          <div class="col-3 mb-2 to-container rectangle-data">
+            <div class="input-group">
+              <input type="number" class="form-control input-width" placeholder="Width" aria-label="Width" min="1" max="1000" step="1">
+              <span class="input-group-text">x</span>
+              <input type="number" class="form-control input-height" placeholder="Height" aria-label="Height" min="1" max="1000" step="1">
+              <a href="#" class="button-remove btn btn-outline-danger"><i class="bi bi-trash"></i></a>
+            </div>
+          </div>
+          <div class="col-3 mb-2 to-container rectangle-data">
+            <div class="input-group">
+              <input type="number" class="form-control input-width" placeholder="Width" aria-label="Width" min="1" max="1000" step="1">
+              <span class="input-group-text">x</span>
+              <input type="number" class="form-control input-height" placeholder="Height" aria-label="Height" min="1" max="1000" step="1">
+              <a href="#" class="button-remove btn btn-outline-danger"><i class="bi bi-trash"></i></a>
+            </div>
+          </div>
+          <div class="col-3 mb-2 to-container rectangle-data">
+            <div class="input-group">
+              <input type="number" class="form-control input-width" placeholder="Width" aria-label="Width" min="1" max="1000" step="1">
+              <span class="input-group-text">x</span>
+              <input type="number" class="form-control input-height" placeholder="Height" aria-label="Height" min="1" max="1000" step="1">
+              <a href="#" class="button-remove btn btn-outline-danger"><i class="bi bi-trash"></i></a>
+            </div>
+          </div>
+          <div class="col-3 mb-2 to-container rectangle-data">
+            <div class="input-group">
+              <input type="number" class="form-control input-width" placeholder="Width" aria-label="Width" min="1" max="1000" step="1">
+              <span class="input-group-text">x</span>
+              <input type="number" class="form-control input-height" placeholder="Height" aria-label="Height" min="1" max="1000" step="1">
+              <a href="#" class="button-remove btn btn-outline-danger"><i class="bi bi-trash"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2 d-flex">
+            <a href="#" class="button-add btn btn-outline-success mb-2"><i class="bi bi-plus"></i></a>
+            <button id="button_calculate" type="submit" class="btn btn-primary mb-2 ms-2 flex-fill">Calculate</button>
+          </div>
+        </div>
+      </form>
+      <div id="result" class="border mb-5 d-none"></div>
+      <div class="mb-5 collapse" id="invalid_result_collapse">
+        <a class="d-none" data-bs-toggle="collapse" href="#invalid_result_collapse"></a>
+        <div class="card card-body">
+          <h5 class="card-title">Unable to fit :</h5>
+          <div id="invalid_result" class="border">
+          </div>
+        </div>
+      </div>
+      <div class="fixed-bottom row">
+        <a class="btn btn-sm btn-secondary text-center col-12" data-bs-toggle="collapse" href="#details_container">Toggle details</a>
+        <div class="collapse show" id="details_container">
+          <div class="card">
+            <div class="card-body">
+              <div>
+                <dl class="row m-0">
+                  <dt class="col-auto">From :</dt>
+                  <dd id="from_dimension" class="col">&nbsp;</dd>
+                </dl>
+                <dl class="row m-0">
+                  <dt class="col-auto">To :</dt>
+                  <dd id="to_dimension" class="col">&nbsp;</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="rectangle.js"></script>
+    <script src="canvas.js"></script>
+    <script src="buttons.js"></script>
+  </body>
+</html>

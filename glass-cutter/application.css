@@ -1,0 +1,9 @@
+.transition {
+  transition: all .6s ease-in-out;
+}
+
+.transition > .input-group {
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
