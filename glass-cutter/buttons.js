@@ -1,14 +1,19 @@
 addEventListener('DOMContentLoaded', function(){
   const canvas = new Canvas(document.getElementById('result'))
-  window.canvas = canvas
   const form = document.getElementById('form_calculate')
   form.addEventListener('submit', function(event) {
     event.preventDefault()
     event.stopPropagation()
-    form.checkValidity()
+    const isFormValid = form.checkValidity()
     form.classList.add('was-validated')
+    if(!isFormValid) {
+      canvas.reset()
+      form.querySelector('input:invalid').focus()
+      return
+    }
+    const minimumGap = Number(form.querySelector('#input_minimum_gap').value)
     const fromContainer = form.querySelector('.from-container')
-    const rectangle = new Rectangle(fromContainer)
+    const rectangle = new Rectangle(fromContainer, { minimumGap: minimumGap })
     canvas.drawContainer(rectangle)
 
     const toContainers = form.querySelectorAll('.to-container')

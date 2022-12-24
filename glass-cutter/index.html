@@ -13,6 +13,12 @@
       <h1>Test Glass Cutter</h1>
       <form id="form_calculate" action="#" class="needs-validation" novalidate>
         <div class="row">
+          <div class="col-3 mb-2">
+            <div class="input-group">
+              <span class="input-group-text">Minimum Gap</span>
+              <input id="input_minimum_gap" type="number" class="form-control" placeholder="0" aria-label="Height" required="required" min="0" max="1000" step="1" value="0">
+            </div>
+          </div>
           <div class="col-3 mb-2 from-container rectangle-data">
             <div class="input-group">
               <span class="input-group-text">From</span>
@@ -74,7 +80,7 @@
       </div>
       <div class="fixed-bottom row">
         <a class="btn btn-sm btn-secondary text-center col-12" data-bs-toggle="collapse" href="#details_container">Toggle details</a>
-        <div class="collapse show" id="details_container">
+        <div class="collapse" id="details_container">
           <div class="card">
             <div class="card-body">
               <div>

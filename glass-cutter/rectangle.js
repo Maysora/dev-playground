@@ -1,23 +1,14 @@
 class Rectangle {
-  constructor(width, height) {
-    if(typeof width === 'object' && width.classList.contains('rectangle-data')) {
-      const widthEl = width.querySelector('.input-width')
-      const heightEl = width.querySelector('.input-height')
-      this.width = Number(widthEl.value)
-      this.height = Number(heightEl.value)
-    } else {
-      this.width = Number(width)
-      this.height = Number(height)
-    }
+  constructor(dataEl, options) {
+    const widthEl = dataEl.querySelector('.input-width')
+    const heightEl = dataEl.querySelector('.input-height')
+    this.width = Number(widthEl.value)
+    this.height = Number(heightEl.value)
     if(isNaN(this.width)) {
       this.width = 0
     }
     if(isNaN(this.height)) {
       this.height = 0
-    }
-    this.fillable = null
-    this.options = {
-      minimumGap: 0
     }
     if(this.width >= this.height) {
       this.dimension = [this.width, this.height]
@@ -26,6 +17,13 @@ class Rectangle {
       this.dimension = [this.height, this.width]
       this.greaterWidth = false
     }
+    this.options = Object.assign({
+      minimumGap: 0
+    }, options)
+    if(isNaN(this.options.minimumGap)) {
+      this.options.minimumGap = 0
+    }
+    this.fillable = null
     this.initFillable()
   }
 
@@ -39,12 +37,19 @@ class Rectangle {
     }
   }
 
+  getFillable() {
+    if(!this.fillable) {
+      this.initFillable()
+    }
+    return this.fillable
+  }
+
   isValid() {
     return this.height > 0 && this.width > 0
   }
 
   toString() {
-    let temp = this.width + ' x ' + this.height
+    let temp = this.dimension[0] + ' x ' + this.dimension[1]
     if(this.filledPos) {
       temp += ' (' + this.filledPos[0] + ', ' + this.filledPos[1] + ')'
     }
@@ -56,7 +61,7 @@ class Rectangle {
   }
 
   isEmptyCell(x, y) {
-    return this.fillable[y][x] === 0
+    return this.getFillable()[y][x] === 0
   }
 
   isRectangleFit(x, y, rectangle) {
@@ -74,7 +79,7 @@ class Rectangle {
   }
 
   fillCell(x, y) {
-    this.fillable[y][x]++
+    this.getFillable()[y][x]++
   }
 
   findRectangleFit(rectangle) {

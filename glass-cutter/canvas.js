@@ -17,8 +17,7 @@ class Canvas {
 
   drawContainer(rectangle) {
     if(!rectangle.isValid()) {
-      this.el.classList.add('d-none')
-      this.fromText.innerText = ''
+      this.reset
       return
     }
     this.rectangle = rectangle
@@ -48,6 +47,7 @@ class Canvas {
       rectangleEl.style.backgroundColor = color
       rectangleEl.style.width = (rectangle.dimension[0] * this.rectangle.multiplier) + 'px'
       rectangleEl.style.height = (rectangle.dimension[1] * this.rectangle.multiplier) + 'px'
+      new bootstrap.Tooltip(rectangleEl, { title: rectangle.toString() })
       if(rectangle.filledPos) {
         rectangleEl.classList.add('position-absolute')
         rectangleEl.style.top = (rectangle.filledPos[1] * this.rectangle.multiplier) + 'px'
@@ -59,6 +59,7 @@ class Canvas {
     })
     this.el.replaceChildren.apply(this.el, rectangleEls)
     this.invalidEl.replaceChildren.apply(this.invalidEl, invalidRectangleEls)
+    this.invalidEl.classList.remove('d-none')
     const collapseEl = (invalidRectangleEls.length) ? this.invalidEl.closest('.collapse:not(.show)') : this.invalidEl.closest('.collapse.show')
     if(collapseEl) {
       collapseEl.querySelector('a').click()
@@ -68,6 +69,13 @@ class Canvas {
       validRectangles.map((rectangle) => {
         return rectangle.toString()
       }).join(', ')
+  }
+
+  reset() {
+    this.el.classList.add('d-none')
+    this.invalidEl.classList.add('d-none')
+    this.fromText.innerText = ''
+    this.toText.innerText = ''
   }
 }
 
