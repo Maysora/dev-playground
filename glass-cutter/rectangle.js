@@ -64,6 +64,10 @@ class Rectangle {
   }
 
   isEmptyCell(x, y) {
+    if((x != this.dimension[0] && x + this.options.minimumGap > this.dimension[0]) ||
+      (y != this.dimension[1] && y + this.options.minimumGap > this.dimension[1])) {
+      return false
+    }
     return this.getFillable()[y] && this.getFillable()[y][x] === 0
   }
 
@@ -118,8 +122,8 @@ class Rectangle {
     if(found) {
       rectangle.filledPos = found
       const orientation = found[2]
-      for(let rowNum = found[1]; rowNum < rectangle.dimension[(1 + orientation) % 2] + found[1]; rowNum++) {
-        for(let colNum = found[0]; colNum < rectangle.dimension[(0 + orientation) % 2] + found[0]; colNum++) {
+      for(let rowNum = found[1]; rowNum < rectangle[orientation ? 'width' : 'height'] + found[1]; rowNum++) {
+        for(let colNum = found[0]; colNum < rectangle[orientation ? 'height' : 'width'] + found[0]; colNum++) {
           this.fillCell(colNum, rowNum)
         }
       }

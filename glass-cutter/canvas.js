@@ -45,8 +45,8 @@ class Canvas {
       rectangleEl.classList.add('border', 'border-secondary')
       const color = this.randomColor()
       rectangleEl.style.backgroundColor = color
-      rectangleEl.style.width = (rectangle.dimension[0] * this.rectangle.multiplier) + 'px'
-      rectangleEl.style.height = (rectangle.dimension[1] * this.rectangle.multiplier) + 'px'
+      rectangleEl.style.width = (rectangle.width * this.rectangle.multiplier) + 'px'
+      rectangleEl.style.height = (rectangle.height * this.rectangle.multiplier) + 'px'
       new bootstrap.Tooltip(rectangleEl, { title: rectangle.toString() })
       if(rectangle.filledPos) {
         rectangleEl.classList.add('position-absolute')
