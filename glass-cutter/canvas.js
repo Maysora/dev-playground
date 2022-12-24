@@ -52,6 +52,11 @@ class Canvas {
         rectangleEl.classList.add('position-absolute')
         rectangleEl.style.top = (rectangle.filledPos[1] * this.rectangle.multiplier) + 'px'
         rectangleEl.style.left = (rectangle.filledPos[0] * this.rectangle.multiplier) + 'px'
+        if(rectangle.filledPos[2]) {
+          const temp = rectangleEl.style.width
+          rectangleEl.style.width = rectangleEl.style.height
+          rectangleEl.style.height = temp
+        }
         rectangleEls.push(rectangleEl)
       } else {
         invalidRectangleEls.push(rectangleEl)
